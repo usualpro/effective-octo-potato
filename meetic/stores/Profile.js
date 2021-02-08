@@ -11,7 +11,12 @@ class Profile {
     }
 
     drop = profile => {
-        console.log(profile);
+        const onlined = this.online.filter(item => item.id !== profile.id);
+        const featured = this.featured.filter(item => item.id !== profile.id);
+        runInAction(() => {
+            this.online = onlined;
+            this.featured = featured;
+        });
     }
 
 
