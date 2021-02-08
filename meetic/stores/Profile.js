@@ -4,11 +4,16 @@ import { Service } from '../services';
 class Profile {
     online = [];
     featured = [];
-    
+
     constructor() {
         makeAutoObservable(this);
         this.fetchData();
     }
+
+    drop = profile => {
+        console.log(profile);
+    }
+
 
     fetchData = async () => {
         const featured = await Service.featured();
