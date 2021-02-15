@@ -3,10 +3,15 @@ import { observer } from 'mobx-react';
 
 export const Modal = observer(
     () => (Profile.modalState.isOpen)
-        ? <h2>
-            MODAL {JSON.stringify(Profile.modalState.isOpen)}
-            <button onClick={Profile.showModal}>Passe a true</button>
-            <button onClick={Profile.closeModal}>Passe a false</button>
-        </h2>
+        ? <div className='modal'>
+            <button className='btn backdrop' onClick={Profile.closeModal}></button>
+            <div className='modal-inner-content container'>
+                <div className='row'>
+                    <div className='col'>
+                        <img src={Profile.modalState.profile.picture} alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
         : null
 );

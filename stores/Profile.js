@@ -5,7 +5,9 @@ class Profile {
     online = [];
     featured = [];
     modalState = {
-        isOpen: false
+        isOpen: false,
+        profile: null,
+        category: null
     };
 
     constructor() {
@@ -13,8 +15,12 @@ class Profile {
         this.fetchData();
     }
 
-    showModal = () => {
-        this.modalState.isOpen = true;
+    showModal = (category, profile) => {
+        this.modalState = {
+            category,
+            profile,
+            isOpen: true
+        }
     }
 
     closeModal = () => {
