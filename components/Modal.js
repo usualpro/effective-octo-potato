@@ -2,7 +2,7 @@ import Profile from '../stores/Profile';
 import { observer } from 'mobx-react';
 
 export const Modal = observer(
-    () => (Profile.modalState.isOpen)
+    () => (Profile.modalState.isOpen && Profile[Profile.modalState.category].length > 0)
         ? <div className='modal'>
             <button className='btn backdrop' onClick={Profile.closeModal}></button>
             <div className='modal-inner-content container py-3'>
