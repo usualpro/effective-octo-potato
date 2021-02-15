@@ -4,10 +4,21 @@ import { Service } from '../services';
 class Profile {
     online = [];
     featured = [];
+    modalState = {
+        isOpen: false
+    };
 
     constructor() {
         makeAutoObservable(this);
         this.fetchData();
+    }
+
+    showModal = () => {
+        this.modalState.isOpen = true;
+    }
+
+    closeModal = () => {
+        this.modalState.isOpen = false;
     }
 
     drop = profile => {
