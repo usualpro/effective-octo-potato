@@ -15,28 +15,39 @@ class Profile {
         this.fetchData();
     }
 
-    next = (profile) => {
+    next = profile => {
         const model = this[this.modalState.category];
         const indexOfProfile = model.indexOf(profile);
         const nextProfile = (typeof model[indexOfProfile + 1] !== 'undefined')
             ? model[indexOfProfile + 1]
             : model[0];
-        this.modalState = {
-            ...this.modalState,
-            profile: nextProfile
-        }
+        runInAction(() => {
+            this.modalState = {
+                ...this.modalState,
+                profile: nextProfile
+            }
+        })
+
     }
 
     showModal = (category, profile) => {
-        this.modalState = {
-            category,
-            profile,
-            isOpen: true
-        }
+        runInAction(() => {
+            this.modalState = {
+                category,
+                profile,
+                isOpen: true
+            }
+        });
     }
 
     closeModal = () => {
-        this.modalState.isOpen = false;
+        runInAction(() => {
+            this.modalState = {
+                isOpen: false,
+                profile: null,
+                category: null
+            }
+        });
     }
 
     drop = profile => {
@@ -48,7 +59,6 @@ class Profile {
             this.featured = featured;
         });
     }
-
 
     fetchData = async () => {
         const featured = await Service.featured();
