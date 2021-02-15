@@ -15,6 +15,18 @@ class Profile {
         this.fetchData();
     }
 
+    next = (profile) => {
+        const model = this[this.modalState.category];
+        const indexOfProfile = model.indexOf(profile);
+        const nextProfile = (typeof model[indexOfProfile + 1] !== 'undefined')
+            ? model[indexOfProfile + 1]
+            : model[0];
+        this.modalState = {
+            ...this.modalState,
+            profile: nextProfile
+        }
+    }
+
     showModal = (category, profile) => {
         this.modalState = {
             category,
