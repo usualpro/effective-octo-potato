@@ -8,7 +8,7 @@ export const ProfileList = observer(
             {
                 Profile[props.data].map(
                     (e, i) => <div className='col-4 col-md-3 col-lg' key={i}>
-                        <button className='ratio ratio-1x1 border-0' onClick={() => Profile.drop(e)}>
+                        <button className='ratio ratio-1x1 border-0' onClick={Profile.showModal}>
                             <img className='object-fit-cover img-fluid rounded' src={e.picture} alt={e.nickname} />
                         </button>
                     </div>
